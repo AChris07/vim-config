@@ -27,6 +27,12 @@ set lazyredraw " redraw only when we need to
 set showmatch " highlight bracket matching - ([{}])
 " }}}
 
+" Editing {{{
+set pastetoggle=<F2> " Keymap pastetoggle to F10. Pastetoggle is used for 'paste' mode: Vim mode to paste outside (non-terminal) text without messing it up.
+" Keymap Ctrl+V to paste in 'paste' mode
+inoremap <C-v> <F2><C-r>+<F2> 
+"}}}
+
 " Search {{{
 set incsearch " search as characters are entered
 set hlsearch " highlight matches
@@ -54,6 +60,12 @@ nnoremap <leader>u :GundoToggle<CR>
 nnoremap <leader>ev :vsp $MYVIMRC<CR>
 nnoremap <leader>ez :vsp ~/.zshrc<CR>
 nnoremap <leader>sv :source $MYVIMRC<CR>
+" paste text in paste mode (to test)
+" nnoremap <leader>pm <F10><C-S-v>+<F10>
+" stream vi buffer to xxd (alias set vi in 'hex editor' mode)
+nnoremap <leader>eh :%!xxd<CR>
+" turn 'hex editor' mode off
+nnoremap <leader>ehr :%!xxd -r<CR>
 " }}}
 
 " CtrlP settings {{{
