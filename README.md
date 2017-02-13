@@ -15,7 +15,7 @@ Installation
 ```sh
 git clone https://github.com/AChris07/vim-config.git
 cp vim-config/.vimrc ~/
-cp vim-config/.vim ~/
+cp -r vim-config/.vim ~/
 ```
 
 2. Run the script to download the latest version of the modules used:
