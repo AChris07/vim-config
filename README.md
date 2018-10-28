@@ -11,14 +11,14 @@ Feel free to check the .vimrc and/or my used plugins, I'll try to keep it as wel
 Installation
 ------------
 
-1. Copy the `.vimrc` config file and the `.vim` directory on your home:
+1. Clone this repo anywhere in your machine (your HOME folder is recommended):
 ```sh
 git clone https://github.com/AChris07/vim-config.git
-cp vim-config/.vimrc ~/
-cp -r vim-config/.vim ~/
 ```
 
-2. Run the script to download the latest version of the modules used:
+2. Run the install script to link the `.vimrc` config file and the `.vim` directory on your home, as well as start the `modules.sh` script to install your vim plugins:
 ```sh
-./vim-config/modules.sh
+./vim-config/install.sh
 ```
+
+3. That's it! Start your VIM and enjoy!

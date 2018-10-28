@@ -4,7 +4,7 @@ if command -v foo >/dev/null 2>&1; then
   echo "Git is required to download the VIM modules included with this config."; exit 1;
 else
   if [ ! -d "$HOME/.vim" ]; then
-    echo "Make sure to copy .vim in your home directory!"; exit 1;
+    echo "Make sure to link .vim in your home directory!"; exit 1;
   else
     if [ ! -d "$HOME/.vim/bundle" ]; then
       mkdir "$HOME/.vim/bundle"; exit 1;
