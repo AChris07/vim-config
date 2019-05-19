@@ -35,5 +35,6 @@ Plug 'mileszs/ack.vim'                                  " Ack support
 Plug 'joshdick/vim-action-ack'                          " Mappings for easy Ack access
 Plug 'rakr/vim-one'                                     " Colorscheme one
 Plug 'JamshedVesuna/vim-markdown-preview', { 'for': 'md' }
+Plug 'sjl/gundo.vim'                                    " Gundo - Undo tree
 
 call plug#end()

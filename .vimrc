@@ -30,7 +30,7 @@ let g:airline_theme='one'                     " Sets theme for Vim Airline
 " UI Config {{{
 set tabstop=2                                 " Tab width
 set softtabstop=2                             " Width of indent in insert mode
-set shiftwidth=4                              " Width of indent in normal mode
+set shiftwidth=2                              " Width of indent in normal mode
 set expandtab                                 " Use spaces instead of tabs
 set autoindent                                " New line keeps current indentation
 
@@ -84,9 +84,9 @@ set splitright
 
 " Easier mapping for split movement
 nmap <C-h> <C-w>h
-nmap <C-j><C-w>j
-nmap <C-k><C-w>k
-nmap <C-l><C-w>l
+nmap <C-j> <C-w>j
+nmap <C-k> <C-w>k
+nmap <C-l> <C-w>l
 
 " Easier mapping for movement between wrapped lines
 nnoremap k gk
@@ -136,7 +136,7 @@ nnoremap <leader>nohe :%!xxd -r<CR>
 set grepprg=rg\ --color=never\ --hidden
 
 " Ack
-let g:ackprg = 'rg --vimgrep;
+let g:ackprg = 'rg --vimgrep'
 
 " NerdTree
 let NERDTreeHijackNetrw = 0
@@ -165,7 +165,7 @@ let g:UltiSnipsJumpBackwardTrigger="<c-k>"
 let g:UltiSnipsEditSplit='vertical'
 
 " Create snippets in VIM root
-let g:UltiSnipsSnippetDirectories - ['~/.vim/UltiSnips', 'UltiSnips']
+let g:UltiSnipsSnippetDirectories = ['~/.vim/UltiSnips', 'UltiSnips']
 
 " Syntastic
 set statusline+=%#warningmsg#
