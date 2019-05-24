@@ -25,6 +25,10 @@ colorscheme one                               " Vim-one color scheme
 set background=dark                           " Use dark background
 let g:one_allow_italics=1                     " Enables italics
 let g:airline_theme='one'                     " Sets theme for Vim Airline
+" call one#highlight('vimLineComment', '000000', '838383', 'italic')
+" call one#highlight('vimComment', '000000', '838383', 'italic')
+" call one#highlight('comment', '000000', '838383', 'italic')
+call one#highlight('vertSplit', 'ffffff', '', 'none')
 " }}}
 
 " UI Config {{{
@@ -44,6 +48,7 @@ set showmatch                                 " Highlight bracket matching - ([{
 
 set lazyredraw                                " Redraw only when we need to
 set ttyfast                                   " Sends more characters per redraw
+set noerrorbells visualbell t_vb=             " No bells when pressing wrong key.
 
 " Hide '~' at End of Buffer
 highlight EndOfBuffer ctermfg=bg guifg=bg
@@ -67,6 +72,7 @@ set mouse=nicr
 " Search {{{
 set hlsearch                                  " Highlight matches
 set incsearch                                 " Incrementally highlight as we type 
+nnoremap <esc><esc> :noh<CR>              " Double ESC clears last search highlighting 
 " }}}
 
 " Folding {{{
@@ -116,21 +122,25 @@ nmap <Leader>q :q<CR>
 " Toggle Gundo (VIM plugin to visually show undo tree)
 nnoremap <leader>u :GundoToggle<CR>
 
+" Toggle NERDTree
+nnoremap <leader>tr :NERDTreeToggle<CR>
+
 " Stream vi buffer to xxd (alias set vi in 'hex editor' mode)
 nnoremap <leader>he :%!xxd<CR>
 " Turn 'hex editor' mode off
-nnoremap <leader>nohe :%!xxd -r<CR>
+nnoremap <leader>nhe :%!xxd -r<CR>
 
 " We want to open files relative to the current file
 " TODO: Look into how does this work
-" map <Leader>e :e <C-R>=expand("%:p:h") . "/" <CR>
-" map <Leader>t :tabe <C-R>=expand("%:p:h") . "/" <CR>
-" map <Leader>s :split <C-R>=expand("%:p:h") . "/" <CR>
-" map <Leader>vs :vsplit <C-R>=expand("%:p:h") . "/" <CR>
+map <Leader>e :e <C-R>=expand("%:p:h") . "/" <CR>
+map <Leader>t :tabe <C-R>=expand("%:p:h") . "/" <CR>
+map <Leader>s :split <C-R>=expand("%:p:h") . "/" <CR>
+map <Leader>vs :vsplit <C-R>=expand("%:p:h") . "/" <CR>
 " }}}
 
 " Plugins {{{
-" TODO: Implement setup for fzf
+" FZF
+nnoremap <leader>fz :Files<CR>
 
 " We want to use ripgrep
 set grepprg=rg\ --color=never\ --hidden
@@ -142,6 +152,26 @@ let g:ackprg = 'rg --vimgrep'
 let NERDTreeHijackNetrw = 0
 let NERDTreeShowHidden = 1
 let NERDTreeIgnore = ['\.DS_Store$']
+
+" NERDTress File highlighting
+function! NERDTreeHighlightFile(extension, fg, bg, guifg, guibg)
+ exec 'autocmd filetype nerdtree highlight ' . a:extension .' ctermbg='. a:bg .' ctermfg='. a:fg .' guibg='. a:guibg .' guifg='. a:guifg
+ exec 'autocmd filetype nerdtree syn match ' . a:extension .' #^\s\+.*'. a:extension .'$#'
+endfunction
+
+call NERDTreeHighlightFile('jade', 'green', 'none', 'green', '#151515')
+call NERDTreeHighlightFile('ini', 'yellow', 'none', 'yellow', '#151515')
+call NERDTreeHighlightFile('md', 'blue', 'none', '#3366FF', '#151515')
+call NERDTreeHighlightFile('yml', 'yellow', 'none', 'yellow', '#151515')
+call NERDTreeHighlightFile('config', 'yellow', 'none', 'yellow', '#151515')
+call NERDTreeHighlightFile('conf', 'yellow', 'none', 'yellow', '#151515')
+call NERDTreeHighlightFile('json', 'yellow', 'none', 'yellow', '#151515')
+call NERDTreeHighlightFile('html', 'yellow', 'none', 'yellow', '#151515')
+call NERDTreeHighlightFile('styl', 'cyan', 'none', 'cyan', '#151515')
+call NERDTreeHighlightFile('css', 'cyan', 'none', 'cyan', '#151515')
+call NERDTreeHighlightFile('coffee', 'Red', 'none', 'red', '#151515')
+call NERDTreeHighlightFile('js', 'Red', 'none', '#ffa500', '#151515')
+call NERDTreeHighlightFile('php', 'Magenta', 'none', '#ff00ff', '#151515')
 
 " YouCompleteMe
 let g:ycm_filepath_blacklist = {}
@@ -177,7 +207,7 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
-let g:syntastic_scss_checkers = []
+let g:syntastic_scss_checkers = ['stylelint']
 let g:syntastic_javascript_checkers = ['eslint']
 let g:syntastic_html_checkers = []
 let g:syntastic_python_checkers = []
@@ -187,10 +217,6 @@ function! SyntasticCheckHook(errors)
     let g:syntastic_loc_list_height = min([len(a:errors), 10])
   endif
 endfunction
-
-" EditorConfig-vim
-let g:EditorConfig_exec_path = '/usr/local/bin/editorconfig'
-let g:EditorConfig_core_mode = 'python_external'
 
 " Vim-airline
 let g:airline#extensions#branch#enabled = 1
