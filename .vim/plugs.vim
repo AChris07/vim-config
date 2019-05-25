@@ -30,7 +30,7 @@ Plug 'editorconfig/editorconfig-vim'                    " Editorconfig support
 Plug 'vim-airline/vim-airline'                          " Utils toolbar with info
 Plug 'vim-airline/vim-airline-themes'
 Plug 'mattn/emmet-vim'                                  " Emmet support
-Plug 'Valloric/YouCompleteMe', { 'do': 'python install.py --ts-completer --java-completer' }
+Plug 'Valloric/YouCompleteMe', { 'do': 'python install.py --ts-completer --java-completer --rust-completer' }
 Plug 'AndrewRadev/splitjoin.vim'                        " Split and join multiline support
 Plug 'mileszs/ack.vim'                                  " Ack support
 Plug 'joshdick/vim-action-ack'                          " Mappings for easy Ack access
