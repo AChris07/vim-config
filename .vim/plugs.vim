@@ -25,6 +25,7 @@ Plug 'tpope/vim-jdaddy'                                 " Mappings for working w
 Plug 'tpope/vim-rhubarb'                                " Integration with Hub
 Plug 'godlygeek/tabular'                                " Text aligning
 Plug 'vim-syntastic/syntastic'                          " Syntax checking and linting engine
+Plug 'mtscout6/syntastic-local-eslint.vim'              " Forces Syntastic to use local Eslint
 Plug 'sheerun/vim-polyglot'                             " Linting rules for several languages 
 Plug 'editorconfig/editorconfig-vim'                    " Editorconfig support
 Plug 'vim-airline/vim-airline'                          " Utils toolbar with info
