@@ -11,14 +11,13 @@ Feel free to check the .vimrc and/or my used plugins, I'll try to keep it as wel
 Installation
 ------------
 
-1. Clone this repo anywhere in your machine (your HOME folder is recommended):
-```sh
-git clone https://github.com/AChris07/vim-config.git
+
+To get started, you can use the following install script using **cUrl**:
+```
+curl -o- https://raw.githubusercontent.com/AChris07/vim-config/master/install.sh | bash
 ```
 
-2. Run the install script to link the `.vimrc` config file and the `.vim` directory on your home, as well as start the `modules.sh` script to install your vim plugins:
-```sh
-./vim-config/install.sh
+or **wget**:
 ```
-
-3. That's it! Start your VIM and enjoy!
+wget -qO- https://raw.githubusercontent.com/AChris07/vim-config/master/install.sh | bash
+```

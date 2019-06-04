@@ -25,9 +25,6 @@ colorscheme one                               " Vim-one color scheme
 set background=dark                           " Use dark background
 let g:one_allow_italics=1                     " Enables italics
 let g:airline_theme='one'                     " Sets theme for Vim Airline
-" call one#highlight('vimLineComment', '000000', '838383', 'italic')
-" call one#highlight('vimComment', '000000', '838383', 'italic')
-" call one#highlight('comment', '000000', '838383', 'italic')
 call one#highlight('vertSplit', 'ffffff', '', 'none')
 " }}}
 
@@ -146,7 +143,7 @@ map <Leader>vs :vsplit <C-R>=expand("%:p:h") . "/" <CR>
 nnoremap <leader>fz :Files<CR>
 
 " We want to use ripgrep
-set grepprg=rg\ --color=never\ --hidden
+set grepprg=rg\ --hidden
 
 " Ack
 let g:ackprg = 'rg --vimgrep'
