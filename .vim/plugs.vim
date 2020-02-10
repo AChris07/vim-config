@@ -32,6 +32,7 @@ Plug 'vim-airline/vim-airline'                          " Utils toolbar with inf
 Plug 'vim-airline/vim-airline-themes'
 Plug 'mattn/emmet-vim'                                  " Emmet support
 Plug 'Valloric/YouCompleteMe', { 'do': 'python install.py --ts-completer --java-completer --rust-completer' }
+Plug 'rust-lang/rust.vim'                               " Adds Rust support
 Plug 'AndrewRadev/splitjoin.vim'                        " Split and join multiline support
 Plug 'mileszs/ack.vim'                                  " Ack support
 Plug 'joshdick/vim-action-ack'                          " Mappings for easy Ack access
@@ -39,5 +40,6 @@ Plug 'rakr/vim-one'                                     " Colorscheme one
 Plug 'JamshedVesuna/vim-markdown-preview', { 'for': 'md' }
 Plug 'tmux-plugins/vim-tmux-focus-events'               " Fix FocusGained event when running inside tmux
 Plug 'sjl/gundo.vim'                                    " Gundo - Undo tree
+Plug 'posva/vim-vue'
 
 call plug#end()
