@@ -119,8 +119,8 @@ nmap <Leader>q :q<CR>
 " Quickly access the clipboard registry
 noremap <Leader>p "*
 
-" Toggle Gundo (VIM plugin to visually show undo tree)
-nnoremap <leader>u :GundoToggle<CR>
+" Toggle Undotree
+nnoremap <leader>u :UndotreeToggle<CR>
 
 " Toggle NERDTree
 nnoremap <leader>tr :NERDTreeToggle<CR>

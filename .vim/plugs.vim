@@ -39,7 +39,7 @@ Plug 'joshdick/vim-action-ack'                          " Mappings for easy Ack 
 Plug 'rakr/vim-one'                                     " Colorscheme one
 Plug 'JamshedVesuna/vim-markdown-preview', { 'for': 'md' }
 Plug 'tmux-plugins/vim-tmux-focus-events'               " Fix FocusGained event when running inside tmux
-Plug 'sjl/gundo.vim'                                    " Gundo - Undo tree
+Plug 'mbbill/undotree'                                  " Undo tree
 Plug 'posva/vim-vue'
 Plug 'leafgarland/typescript-vim'                       " Syntax support for Typescript
 
