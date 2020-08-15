@@ -41,5 +41,6 @@ Plug 'JamshedVesuna/vim-markdown-preview', { 'for': 'md' }
 Plug 'tmux-plugins/vim-tmux-focus-events'               " Fix FocusGained event when running inside tmux
 Plug 'sjl/gundo.vim'                                    " Gundo - Undo tree
 Plug 'posva/vim-vue'
+Plug 'leafgarland/typescript-vim'                       " Syntax support for Typescript
 
 call plug#end()
