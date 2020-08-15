@@ -265,10 +265,10 @@ augroup end
 " }}}
 
 " Backups {{{
+set directory=$HOME/.vim/swap//,$HOME/tmp//,/var/tmp,/tmp
 set backup
-set backupdir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
+set backupdir=$HOME/.vim/tmp//,$HOME/tmp//,/var/tmp,/tmp
 set backupskip=/tmp/*,/private/tmp/*
-set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
 set writebackup
 " }}}
 
