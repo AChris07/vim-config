@@ -173,19 +173,6 @@ call NERDTreeHighlightFile('coffee', 'Red', 'none', 'red', '#151515')
 call NERDTreeHighlightFile('js', 'Red', 'none', '#ffa500', '#151515')
 call NERDTreeHighlightFile('php', 'Magenta', 'none', '#ff00ff', '#151515')
 
-" YouCompleteMe
-let g:ycm_filepath_blacklist = {}
-let g:ycm_autoclose_preview_window_after_insertion = 1
-
-" Debugging
-let g:ycm_server_keep_log_files = 1
-let g:ycm_log_level = 'debug'
-
-nmap <Leader>gt :YcmCompleter GoTo<CR>
-nmap <Leader>gr :YcmCompleter GoToReferences<CR>
-nmap <Leader>rn :YcmCompleter RefactorRename
-nmap <Leader>fi >YcmCompleter FixIt<CR>
-
 " Ultisnips
 let g:UltiSnipsExpandTrigger="<c-j>"
 let g:UltiSnipsJumpForwardTrigger="<c-j>"
@@ -197,30 +184,35 @@ let g:UltiSnipsEditSplit='vertical'
 " Create snippets in VIM root
 let g:UltiSnipsSnippetDirectories = ['~/.vim/UltiSnips', 'UltiSnips']
 
-" Syntastic
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
+" ALE
+let g:ale_completion_enabled = 1
 
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
+let g:ale_lint_on_enter = 0
+let g:ale_lint_on_save = 1
+let g:ale_sign_error = '●'
+let g:ale_sign_warning = '.'
 
-let g:syntastic_scss_checkers = ['stylelint']
-let g:syntastic_javascript_checkers = ['eslint']
-let g:syntastic_vue_checkers = ['eslint']
-let g:syntastic_html_checkers = []
-let g:syntastic_python_checkers = ['flake8']
+let g:ale_linters = {
+\   'rust': ['rls'],
+\}
 
-function! SyntasticCheckHook(errors)
-  if !empty(a:errors)
-    let g:syntastic_loc_list_height = min([len(a:errors), 10])
-  endif
-endfunction
+let g:ale_fixers = {
+\   'javascript': ['prettier', 'eslint'],
+\   'typescript': ['tslint'],
+\   'json': ['prettier'],
+\   'rust': ['rustfmt'],
+\}
+let g:ale_javascript_prettier_use_local_config = 1
+
+nmap <silent> <leader>e <Plug>(ale_next_wrap)
+nmap <Leader>gt <Plug>(ale_go_to_definition_in_vsplit)
+nmap <Leader>gr <Plug>(ale_find_references)
+nmap <Leader>fi <Plug>(ale_fix)
+nmap <Leader>doc <Plug>(ale_documentation)
 
 " Vim-airline
 let g:airline#extensions#branch#enabled = 1
+let g:airline#extensions#ale#enabled = 1
 set noshowmode
 set laststatus=2
 
@@ -233,9 +225,6 @@ endfunction
 call airline#parts#define('linenr', {'function': 'CustomLineNumber', 'accents': 'bold'})
 
 let g:airline_section_z = airline#section#create(['%3p%%: ', 'linenr', ':%3v'])
-
-" Vim-javascript
-let g:javascript_plugin_jsdoc = 1
 
 " Emmet-vim
 " Make `.js` files expand `className` instead of `class`

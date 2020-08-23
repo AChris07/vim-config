@@ -10,7 +10,7 @@ Plug 'scrooloose/nerdtree', { 'on' : 'NERDTreeToggle' } " Tree directory
 Plug 'airblade/vim-gitgutter'                           " Git Gutter to know changes from HEAD
 Plug 'majutsushi/tagbar'                                " Shows tags of current file to get general file structure
 Plug 'tommcdo/vim-exchange'                             " Text exchange with `cx{motion}`
-Plug 'skwp/greplace.vim'                                " Global Search & Replace
+Plug 'skwp/greplace.vim'                                " Global Search & Replace - might remove, does not seem to work as expected
 Plug 'jiangmiao/auto-pairs'                             " Insert/delete brackets, parens, quotes in pair
 Plug 'tpope/vim-sensible'                               " Vim starting setup. Necessary?
 Plug 'tpope/vim-commentary'                             " Easy commenting out
@@ -21,26 +21,19 @@ Plug 'tpope/vim-fugitive'                               " Git wrapper
 Plug 'tpope/vim-unimpaired'                             " More mappings for cursor movement
 " Plug 'tpope/vim-abolish'                                " Easier working with wording variants
 Plug 'tpope/vim-eunuch'                                 " Extra UNIX commands inside Vim
-Plug 'tpope/vim-jdaddy'                                 " Mappings for working with JSON  
-Plug 'tpope/vim-rhubarb'                                " Integration with Hub
+Plug 'tpope/vim-jdaddy'                                 " Mappings for working with JSON
 Plug 'godlygeek/tabular'                                " Text aligning
-Plug 'vim-syntastic/syntastic'                          " Syntax checking and linting engine
-Plug 'mtscout6/syntastic-local-eslint.vim'              " Forces Syntastic to use local Eslint
-Plug 'sheerun/vim-polyglot'                             " Linting rules for several languages 
+Plug 'dense-analysis/ale'                               " Async Linting engine
 Plug 'editorconfig/editorconfig-vim'                    " Editorconfig support
 Plug 'vim-airline/vim-airline'                          " Utils toolbar with info
 Plug 'vim-airline/vim-airline-themes'
 Plug 'mattn/emmet-vim'                                  " Emmet support
-Plug 'Valloric/YouCompleteMe', { 'do': 'python install.py --ts-completer --java-completer --rust-completer' }
-Plug 'rust-lang/rust.vim'                               " Adds Rust support
 Plug 'AndrewRadev/splitjoin.vim'                        " Split and join multiline support
 Plug 'mileszs/ack.vim'                                  " Ack support
 Plug 'joshdick/vim-action-ack'                          " Mappings for easy Ack access
 Plug 'rakr/vim-one'                                     " Colorscheme one
 Plug 'JamshedVesuna/vim-markdown-preview', { 'for': 'md' }
-Plug 'tmux-plugins/vim-tmux-focus-events'               " Fix FocusGained event when running inside tmux
 Plug 'mbbill/undotree'                                  " Undo tree
 Plug 'posva/vim-vue'
-Plug 'leafgarland/typescript-vim'                       " Syntax support for Typescript
 
 call plug#end()
