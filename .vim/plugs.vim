@@ -24,6 +24,10 @@ Plug 'tpope/vim-eunuch'                                 " Extra UNIX commands in
 Plug 'tpope/vim-jdaddy'                                 " Mappings for working with JSON
 Plug 'godlygeek/tabular'                                " Text aligning
 Plug 'dense-analysis/ale'                               " Async Linting engine
+Plug 'heavenshell/vim-jsdoc', {
+\  'for': ['javascript', 'javascript.jsx','typescript'],
+\  'do': 'make install'
+\}
 Plug 'editorconfig/editorconfig-vim'                    " Editorconfig support
 Plug 'vim-airline/vim-airline'                          " Utils toolbar with info
 Plug 'vim-airline/vim-airline-themes'

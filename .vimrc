@@ -210,6 +210,10 @@ nmap <Leader>gr <Plug>(ale_find_references)
 nmap <Leader>fi <Plug>(ale_fix)
 nmap <Leader>doc <Plug>(ale_documentation)
 
+" JSDoc
+nmap <Leader>jsd :JsDoc<CR>
+nmap <Leader>jsf :JsDocFormat<CR>
+
 " Vim-airline
 let g:airline#extensions#branch#enabled = 1
 let g:airline#extensions#ale#enabled = 1
