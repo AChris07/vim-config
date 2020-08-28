@@ -198,6 +198,7 @@ let g:ale_linters = {
 \}
 
 let g:ale_fixers = {
+\   '*': ['trim_whitespace'],
 \   'javascript': ['prettier', 'eslint'],
 \   'typescript': ['tslint'],
 \   'json': ['prettier'],
@@ -206,7 +207,7 @@ let g:ale_fixers = {
 let g:ale_javascript_prettier_use_local_config = 1
 
 nmap <silent> <leader>e <Plug>(ale_next_wrap)
-nmap <Leader>gt <Plug>(ale_go_to_definition_in_vsplit)
+nmap <Leader>gt <Plug>(ale_go_to_definition)
 nmap <Leader>gr <Plug>(ale_find_references)
 nmap <Leader>fi <Plug>(ale_fix)
 nmap <Leader>doc <Plug>(ale_documentation)
