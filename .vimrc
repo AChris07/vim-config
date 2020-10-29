@@ -105,6 +105,7 @@ inoremap kj <Esc>
 
 " Shortcut to edit vimrc/zshrc and source vimrc changes
 nmap <leader>ve :tabedit $MYVIMRC<CR>
+nmap <leader>pe :tabedit ~/.vim/plugs.vim<CR>
 nmap <leader>ze :tabedit ~/.zshrc<CR>
 
 " Highlight last inserted text
@@ -200,7 +201,7 @@ let g:ale_linters = {
 let g:ale_fixers = {
 \   '*': ['trim_whitespace'],
 \   'javascript': ['prettier', 'eslint'],
-\   'typescript': ['tslint'],
+\   'typescript': ['prettier', 'tslint'],
 \   'json': ['prettier'],
 \   'rust': ['rustfmt'],
 \}
