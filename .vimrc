@@ -63,13 +63,13 @@ set mouse=nicr
 " Editing {{{
 " set pastetoggle=<F2> " Keymap pastetoggle to F10. Pastetoggle is used for 'paste' mode: Vim mode to paste outside (non-terminal) text without messing it up.
 " Keymap Ctrl+V to paste in 'paste' mode
-" inoremap <C-v> <F2><C-r>+<F2> 
+" inoremap <C-v> <F2><C-r>+<F2>
 "}}}
 
 " Search {{{
 set hlsearch                                  " Highlight matches
-set incsearch                                 " Incrementally highlight as we type 
-nnoremap <esc><esc> :noh<CR>              " Double ESC clears last search highlighting 
+set incsearch                                 " Incrementally highlight as we type
+nnoremap <esc><esc> :noh<CR>              " Double ESC clears last search highlighting
 " }}}
 
 " Folding {{{
@@ -190,6 +190,7 @@ let g:ale_completion_enabled = 1
 
 let g:ale_lint_on_enter = 0
 let g:ale_lint_on_save = 1
+let g:ale_fix_on_save = 1
 let g:ale_sign_error = '●'
 let g:ale_sign_warning = '.'
 
