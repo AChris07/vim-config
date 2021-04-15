@@ -187,6 +187,7 @@ let g:UltiSnipsSnippetDirectories = ['~/.vim/UltiSnips', 'UltiSnips']
 
 " ALE
 let g:ale_completion_enabled = 1
+let g:ale_completion_autoimport = 1
 
 let g:ale_lint_on_enter = 0
 let g:ale_lint_on_save = 1
@@ -196,6 +197,7 @@ let g:ale_sign_warning = '.'
 
 let g:ale_linters = {
 \   'javascript': ['eslint', 'flow-language-server'],
+\   'python': ['jedils'],
 \   'rust': ['rls'],
 \}
 
@@ -207,10 +209,12 @@ let g:ale_fixers = {
 \   'rust': ['rustfmt'],
 \}
 let g:ale_javascript_prettier_use_local_config = 1
+let g:ale_python_auto_pipenv = 1
 
 nmap <silent> <leader>e <Plug>(ale_next_wrap)
 nmap <Leader>gt <Plug>(ale_go_to_definition)
 nmap <Leader>gr <Plug>(ale_find_references)
+nmap <Leader>re <Plug>(ale_rename)
 nmap <Leader>fi <Plug>(ale_fix)
 nmap <Leader>doc <Plug>(ale_documentation)
 
@@ -253,6 +257,7 @@ let vim_markdown_preview_browser = 'Google Chrome'
 autocmd BufNewFile,BufRead Dockerfile* set filetype=Dockerfile
 autocmd BufNewFile,BufRead *nginx.conf* setf nginx
 autocmd BufNewFile,BufRead *.snippets set list
+autocmd FileType gitcommit,markdown,text setlocal spell
 
 " Automatically source the .vimrc file on save
 augroup autosourcing

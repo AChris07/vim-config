@@ -3,7 +3,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'vim-scripts/BufOnly.vim'                          " Deletes all buffers but the current one
 Plug 'SirVer/ultisnips'                                 " Snippets lister and manager
 Plug 'honza/vim-snippets'
-Plug 'junegunn/fzf'                                     " fzf for Vim use only (not going with shell installation)
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }     " fzf for Vim use only (not going with shell installation)
 Plug 'junegunn/fzf.vim'
 Plug 'ervandew/supertab'                                " Replace all insertion completion with <Tab>
 Plug 'scrooloose/nerdtree', { 'on' : 'NERDTreeToggle' } " Tree directory
@@ -39,5 +39,6 @@ Plug 'rakr/vim-one'                                     " Colorscheme one
 Plug 'JamshedVesuna/vim-markdown-preview', { 'for': 'md' }
 Plug 'mbbill/undotree'                                  " Undo tree
 Plug 'posva/vim-vue'
+Plug 'chrisbra/csv.vim'
 
 call plug#end()
