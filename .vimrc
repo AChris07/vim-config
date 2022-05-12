@@ -1,6 +1,9 @@
 " Welcome to my .vimrc! Default key for unfolding is Space. za will also work.
 set nocompatible                              " We want the latest Vim settings
 
+" Support ALE and CoC, enabling before Plugins load
+let g:ale_disable_lsp = 1
+
 " Plugins {{{
 so ~/.vim/plugs.vim
 " }}}
@@ -46,6 +49,7 @@ set showmatch                                 " Highlight bracket matching - ([{
 set lazyredraw                                " Redraw only when we need to
 set ttyfast                                   " Sends more characters per redraw
 set noerrorbells visualbell t_vb=             " No bells when pressing wrong key.
+set updatetime=500                            " Default is 4000ms. Reducing for better user experience
 
 " Hide '~' at End of Buffer
 highlight EndOfBuffer ctermfg=bg guifg=bg
@@ -186,9 +190,6 @@ let g:UltiSnipsEditSplit='vertical'
 let g:UltiSnipsSnippetDirectories = ['~/.vim/UltiSnips', 'UltiSnips']
 
 " ALE
-let g:ale_completion_enabled = 1
-let g:ale_completion_autoimport = 1
-
 let g:ale_lint_on_enter = 0
 let g:ale_lint_on_save = 1
 let g:ale_fix_on_save = 1
@@ -211,11 +212,21 @@ let g:ale_fixers = {
 let g:ale_javascript_prettier_use_local_config = 1
 let g:ale_python_auto_pipenv = 1
 
-nmap <silent> <leader>e <Plug>(ale_next_wrap)
-nmap <Leader>gt <Plug>(ale_go_to_definition)
-nmap <Leader>gr <Plug>(ale_find_references)
-nmap <Leader>re <Plug>(ale_rename)
-nmap <Leader>fi <Plug>(ale_fix)
+" CoC
+let g:coc_global_extensions = ['coc-json', 'coc-git']
+
+nmap <silent> g] <Plug>(ale_next_wrap)
+nmap <silent> g[ <Plug>(ale_prev_wrap)
+
+nmap <silent> <Leader>gd <Plug>(coc-definition)
+nmap <silent> <Leader>gy <Plug>(coc-type-definition)
+nmap <silent> <Leader>gi <Plug>(coc-implementation)
+nmap <silent> <Leader>gr <Plug>(coc-references)
+
+nmap <Leader>re <Plug>(coc-rename)
+nmap <Leader>fi <Plug>(coc-fix-current)
+nmap <Leader>ca <Plug>(coc-codeaction)
+nmap <Leader>cl <Plug>(coc-codelens-action)
 nmap <Leader>doc <Plug>(ale_documentation)
 
 " JSDoc

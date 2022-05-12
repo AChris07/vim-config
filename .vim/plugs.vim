@@ -5,9 +5,8 @@ Plug 'SirVer/ultisnips'                                    " Snippets lister and
 Plug 'honza/vim-snippets'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }        " fzf for Vim use only (not going with shell installation)
 Plug 'junegunn/fzf.vim'
-Plug 'ervandew/supertab'                                   " Replace all insertion completion with <Tab>
+" Plug 'ervandew/supertab'                                   " Replace all insertion completion with <Tab>
 Plug 'scrooloose/nerdtree', { 'on' : 'NERDTreeToggle' }    " Tree directory
-Plug 'airblade/vim-gitgutter'                              " Git Gutter to know changes from HEAD
 Plug 'majutsushi/tagbar'                                   " Shows tags of current file to get general file structure
 Plug 'tommcdo/vim-exchange'                                " Text exchange with `cx{motion}`
 Plug 'skwp/greplace.vim'                                   " Global Search & Replace - might remove, does not seem to work as expected
@@ -24,6 +23,7 @@ Plug 'tpope/vim-eunuch'                                    " Extra UNIX commands
 Plug 'tpope/vim-jdaddy'                                    " Mappings for working with JSON
 Plug 'godlygeek/tabular'                                   " Text aligning
 Plug 'dense-analysis/ale'                                  " Async Linting engine
+Plug 'neoclide/coc.nvim', {'branch': 'release'}            " Autocomplete/LSP integration
 Plug 'heavenshell/vim-jsdoc', {
 \  'for': ['javascript', 'javascript.jsx','typescript'],
 \  'do': 'make install'
