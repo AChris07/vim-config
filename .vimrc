@@ -10,7 +10,6 @@ so ~/.vim/plugs.vim
 
 " Colors {{{
 syntax enable                                 " Enable syntax processing
-set t_CO=256                                  " Use 256 colors on terminal Vim
 
   " Enable true color {{{
   if (has("termguicolors"))
@@ -50,6 +49,7 @@ set lazyredraw                                " Redraw only when we need to
 set ttyfast                                   " Sends more characters per redraw
 set noerrorbells visualbell t_vb=             " No bells when pressing wrong key.
 set updatetime=500                            " Default is 4000ms. Reducing for better user experience
+set pumheight=10                              " Set max height for pop-up menu
 
 " Hide '~' at End of Buffer
 highlight EndOfBuffer ctermfg=bg guifg=bg
@@ -61,7 +61,7 @@ set linespace=12
 " }}}
 
 " Mouse {{{
-set mouse=nicr
+set mouse=a
 " }}}
 
 " Editing {{{
@@ -73,7 +73,7 @@ set mouse=nicr
 " Search {{{
 set hlsearch                                  " Highlight matches
 set incsearch                                 " Incrementally highlight as we type
-nnoremap <esc><esc> :noh<CR>              " Double ESC clears last search highlighting
+nnoremap <esc><esc> :noh<CR>                  " Double ESC clears last search highlighting
 " }}}
 
 " Folding {{{
@@ -124,6 +124,10 @@ nmap <Leader>q :q<CR>
 " Quickly access the clipboard registry
 noremap <Leader>p "*
 
+if has("nvim")
+  set clipboard+=unnamedplus
+endif
+
 " Toggle Undotree
 nnoremap <leader>u :UndotreeToggle<CR>
 
@@ -158,6 +162,8 @@ let NERDTreeHijackNetrw = 0
 let NERDTreeShowHidden = 1
 let NERDTreeIgnore = ['\.DS_Store$']
 
+map <Leader>fr :NERDTreeFind <CR>
+
 " NERDTress File highlighting
 function! NERDTreeHighlightFile(extension, fg, bg, guifg, guibg)
  exec 'autocmd filetype nerdtree highlight ' . a:extension .' ctermbg='. a:bg .' ctermfg='. a:fg .' guibg='. a:guibg .' guifg='. a:guifg
@@ -190,6 +196,7 @@ let g:UltiSnipsEditSplit='vertical'
 let g:UltiSnipsSnippetDirectories = ['~/.vim/UltiSnips', 'UltiSnips']
 
 " ALE
+let g:ale_disable_lsp = 1
 let g:ale_lint_on_enter = 0
 let g:ale_lint_on_save = 1
 let g:ale_fix_on_save = 1
@@ -197,15 +204,18 @@ let g:ale_sign_error = '●'
 let g:ale_sign_warning = '.'
 
 let g:ale_linters = {
-\   'javascript': ['eslint', 'flow-language-server'],
-\   'python': ['jedils'],
-\   'rust': ['rls'],
+\   'javascript': ['standard'],
+\   'javascriptreact': ['standard'],
+\   'typescript': ['tslint'],
+\   'typescriptreact': ['tslint'],
 \}
 
 let g:ale_fixers = {
 \   '*': ['trim_whitespace'],
-\   'javascript': ['prettier', 'eslint'],
+\   'javascript': ['standard'],
+\   'javascriptreact': ['standard'],
 \   'typescript': ['prettier', 'tslint'],
+\   'typescriptreact': ['prettier', 'tslint'],
 \   'json': ['prettier'],
 \   'rust': ['rustfmt'],
 \}
@@ -228,6 +238,40 @@ nmap <Leader>fi <Plug>(coc-fix-current)
 nmap <Leader>ca <Plug>(coc-codeaction)
 nmap <Leader>cl <Plug>(coc-codelens-action)
 nmap <Leader>doc <Plug>(ale_documentation)
+
+" Use tab for trigger completion with characters ahead and navigate.
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+" Use <c-space> to trigger completion.
+if has('nvim')
+  inoremap <silent><expr> <c-space> coc#refresh()
+else
+  inoremap <silent><expr> <c-@> coc#refresh()
+endif
+
+" Show all diagnostics.
+nmap <silent> <Leader>ld :<C-u>CocList diagnostics<cr>
+" Manage extensions.
+nmap <silent> <Leader>le  :<C-u>CocList extensions<cr>
+" Show commands.
+nmap <silent> <Leader>lc  :<C-u>CocList commands<cr>
+" Find symbol of current document.
+nmap <silent> <Leader>lo  :<C-u>CocList outline<cr>
+" Search workspace symbols.
+nmap <silent> <Leader>ls  :<C-u>CocList -I symbols<cr>
+" Do default action for next item.
+" nnoremap <silent> <Leader>j  :<C-u>CocNext<CR>
+" Do default action for previous item.
+" nnoremap <silent> <Leader>k  :<C-u>CocPrev<CR>
 
 " JSDoc
 nmap <Leader>jsd :JsDoc<CR>
@@ -269,11 +313,12 @@ autocmd BufNewFile,BufRead Dockerfile* set filetype=Dockerfile
 autocmd BufNewFile,BufRead *nginx.conf* setf nginx
 autocmd BufNewFile,BufRead *.snippets set list
 autocmd FileType gitcommit,markdown,text setlocal spell
+autocmd CursorHold * silent call CocActionAsync('highlight') " Highlight the symbol and its references when holding the cursor.
 
 " Automatically source the .vimrc file on save
 augroup autosourcing
         autocmd!
-        autocmd BufWritePost .vimrc source % | AirlineRefresh
+        autocmd BufWritePost .vimrc,init.vim source % | AirlineRefresh
 augroup end
 " }}}
 
